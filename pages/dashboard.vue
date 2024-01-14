@@ -1,11 +1,10 @@
 <script setup lang="ts">
 definePageMeta({
-    layout: 'panel'
+    layout: 'panel',
+    middleware: ['authenticated'],
 })
 </script>
 
 <template>
-    <NuxtLayout>
-        <p>Panel Page</p>
-    </NuxtLayout>
+    <NuxtPage></NuxtPage>
 </template>

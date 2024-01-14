@@ -1,7 +1,8 @@
-export default defineNuxtRouteMiddleware(() => {
-    const cookie = useCookie('auth')
-
+export default defineNuxtRouteMiddleware((to, from) => {
+    const appConfig = useAppConfig()
+    const cookie = useCookie(appConfig.discordAccessTokenCookieName)
+    
     if (!cookie.value) {
-        return redirectTo('/login')
+        return navigateTo('/login')
     }
 })

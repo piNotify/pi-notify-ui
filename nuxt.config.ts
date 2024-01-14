@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    appConfig:{
+        discordAddToServerUrl: process.env.DISCORD_ADD_TO_SERVER_URL,
+        backendUrl: process.env.BACKEND_URL,
+        discordAccessTokenCookieName: 'dauth',
+        discordRefreshTokenCookieName: 'drauth',
+    },
     devtools: { enabled: true },
     modules: [
         '@nuxtjs/i18n',

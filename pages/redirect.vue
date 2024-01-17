@@ -3,28 +3,58 @@ const route = useRoute()
 const appConfig = useAppConfig()
 const code = route.query.code
 
-await callOnce(async () => {
-    const discordAuth: any = await $fetch(
+const apiError = useState("apiError", () => ({
+    error: false,
+    message: ''
+}))
+
+console.log("redirect")
+async function discordLogin() {
+    const {data, error}: any = await useFetch(
         appConfig.backendUrl + 'discord/login', {
             query: {
                 code
             }
         })
+
+    console.log({
+        data: data.value,
+        error: error.value
+    })
+    
+    if (error.value) {
+        apiError.value = {
+            error: true,
+            message: error.data?.message || 'Error on Discord Login'
+        }
+        return
+    }
+
+    console.log("apiError", apiError)
         
     const accessToken = useCookie(appConfig.discordAccessTokenCookieName, {
-        maxAge: discordAuth.expires_in
+        maxAge: data.value.expires_in
     })
 
-    accessToken.value = discordAuth.access_token
+    accessToken.value = data.value.access_token
 
     const refreshToken = useCookie(appConfig.discordRefreshTokenCookieName)
-    refreshToken.value = discordAuth.refresh_token
+    refreshToken.value = data.value.refresh_token
 
 
-    navigateTo('/dashboard')
-})
+    navigateTo(`/dashboard/guild/${route.query.guild_id}`)
+}
+
+await discordLogin()
 </script>
 
 <template>
-    <span>Carregando...</span>
+    <div>
+        <div v-if="apiError.error">
+            <span>{{ apiError.message }}</span>
+        </div>
+        <div v-else>
+            <span>Redirecting...</span>
+        </div>
+    </div>
 </template>

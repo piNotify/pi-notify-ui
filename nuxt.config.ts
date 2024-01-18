@@ -2,11 +2,16 @@
 export default defineNuxtConfig({
     appConfig:{
         discordAddToServerUrl: process.env.DISCORD_ADD_TO_SERVER_URL,
+        discordLoginUrl: process.env.DISCORD_LOGIN_URL,
         backendUrl: process.env.BACKEND_URL,
         discordAccessTokenCookieName: 'dauth',
         discordRefreshTokenCookieName: 'drauth',
+        discordRefreshTokenCookieMaxAge: 31536000, // 1 year
     },
     devtools: { enabled: true },
+    /*
+     * Modules
+     */
     modules: [
         '@nuxtjs/i18n',
         '@nuxtjs/google-fonts',

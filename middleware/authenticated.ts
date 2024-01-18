@@ -1,8 +1,7 @@
+import { hasDiscordAuthToken } from "~/utils/discord/DiscordCookies"
+
 export default defineNuxtRouteMiddleware((to, from) => {
-    const appConfig = useAppConfig()
-    const cookie = useCookie(appConfig.discordAccessTokenCookieName)
-    
-    if (!cookie.value) {
+    if (!hasDiscordAuthToken()) {
         return navigateTo('/login')
     }
 })

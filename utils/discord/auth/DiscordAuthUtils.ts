@@ -1,5 +1,5 @@
-import { getDiscordAuthToken, type DiscordLoginResponse, refreshDiscordAuthToken } from "./DiscordApi";
-import { getDiscordRefreshToken, hasDiscordRefreshToken, setDiscordCookies } from "./DiscordCookies";
+import { getDiscordAuthToken, type DiscordLoginResponse, refreshDiscordAuthToken } from "./DiscordAuthApi";
+import { getDiscordRefreshToken, hasDiscordRefreshToken, setDiscordCookies } from "../DiscordCookies";
 
 export async function discordLogin(code: String){
     try{

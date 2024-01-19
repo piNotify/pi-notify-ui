@@ -8,7 +8,7 @@ export async function getDiscordAuthToken(code: String): Promise<DiscordLoginRes
     const appConfig = useAppConfig()
 
     const {data, error}: any = await useFetch(
-        appConfig.backendUrl + 'discord/login', {
+        appConfig.backendUrl + 'discord/auth/login', {
             query: {
                 code
             }
@@ -29,7 +29,7 @@ export async function refreshDiscordAuthToken(refreshToken: String): Promise<Dis
     const appConfig = useAppConfig()
 
     const {data, error}: any = await useFetch(
-        appConfig.backendUrl + 'discord/refresh', {
+        appConfig.backendUrl + 'discord/auth/refresh', {
             query: {
                 refreshToken
             }

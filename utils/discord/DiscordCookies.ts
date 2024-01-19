@@ -26,6 +26,12 @@ export function setDiscordCookies(accessToken: string, accessTokenMaxAge: number
     refreshTokenCookie.value = refreshToken
 }
 
+export function getDiscordAuthToken(){
+    const appConfig = useAppConfig()
+    const cookie = useCookie(appConfig.discordAccessTokenCookieName)
+    return cookie.value
+}
+
 export function getDiscordRefreshToken(){
     const appConfig = useAppConfig()
     const cookie = useCookie(appConfig.discordRefreshTokenCookieName)

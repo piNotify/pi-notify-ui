@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { hasDiscordRefreshToken, hasDiscordAuthToken } from '@/utils/discord/DiscordCookies';
-import { refreshDiscordToken } from '@/utils/discord/DiscordUtils';
+import { refreshDiscordToken } from '@/utils/discord/auth/DiscordAuthUtils';
 
 const apiError = ref({
     error: false,

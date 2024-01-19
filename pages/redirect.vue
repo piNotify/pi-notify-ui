@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { discordLogin } from '@/utils/discord/DiscordUtils'
+import { discordLogin } from '@/utils/discord/auth/DiscordAuthUtils'
 
 const route = useRoute()
 const apiError = ref({

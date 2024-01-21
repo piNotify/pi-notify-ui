@@ -1,3 +1,11 @@
 {
-    "app-name": "PiNotify"
+    "app-name": "PiNotify",
+    "discord": {
+        "api": {
+            "error": {
+                "login": "Error on Discord Login",
+                "get-guilds": "Error on getting guilds from Discord",
+            }
+        }
+    }
 }

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n({useScope: 'local'})
 import { discordLogin } from '@/utils/discord/auth/DiscordAuthUtils'
 
 const route = useRoute()
@@ -34,7 +35,18 @@ try{
             <span>{{ apiError.message }}</span>
         </div>
         <div v-else>
-            <span>Redirecting...</span>
+            <span>{{ t('redirecting') }}</span>
         </div>
     </div>
 </template>
+
+<i18n lang="json">
+    {
+        "en-US": {
+            "redirecting": "Redirecting..."
+        },
+        "pt-BR": {
+            "redirecting": "Redirecionando..."
+        }
+    }
+    </i18n>

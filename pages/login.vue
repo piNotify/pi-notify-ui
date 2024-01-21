@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n({useScope: 'local'})
 import { hasDiscordRefreshToken, hasDiscordAuthToken } from '@/utils/discord/DiscordCookies';
 import { refreshDiscordToken } from '@/utils/discord/auth/DiscordAuthUtils';
 
@@ -37,7 +38,18 @@ try{
             <span>{{ apiError.message }}</span>
         </div>
         <div v-else>
-            <span>Redirecting...</span>
+            <span>{{ t('redirecting') }}</span>
         </div>
     </div>
 </template>
+
+<i18n lang="json">
+    {
+        "en-US": {
+            "redirecting": "Redirecting..."
+        },
+        "pt-BR": {
+            "redirecting": "Redirecionando..."
+        }
+    }
+    </i18n>

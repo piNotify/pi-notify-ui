@@ -8,8 +8,8 @@ export type DiscordGuild = {
 }
 
 export async function getDiscordGuildsAdmin(accessToken: string): Promise<DiscordGuild[]> {
+    const { t } = useI18n()
     try{
-
         const appConfig = useAppConfig()
         
         const {data, error}: any = await useFetch(
@@ -20,12 +20,13 @@ export async function getDiscordGuildsAdmin(accessToken: string): Promise<Discor
         })
         
         if (error.value) {
-            throw new ApiException("Error getting guilds on Discord")
+            throw new ApiException(t('discord.api.error.get-guilds'))
         }
         
         return data.value as DiscordGuild[]
     } catch (e) {
         console.error(e)
-        throw new ApiException("Error getting guilds on Discord")
+        throw new ApiException(t('discord.api.error.get-guilds'))
     }
+    
 }

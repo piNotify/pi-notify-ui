@@ -2,9 +2,9 @@ import { getDiscordAuthToken, type DiscordLoginResponse, refreshDiscordAuthToken
 import { getDiscordRefreshToken, hasDiscordRefreshToken, setDiscordCookies } from "../DiscordCookies";
 
 export async function discordLogin(code: String){
+    const { t } = useI18n()
     try{
         const discordLoginResponse: DiscordLoginResponse = await getDiscordAuthToken(code)
-        console.log("discordLogin.discordLoginResponse", discordLoginResponse)
         
         setDiscordCookies(
             discordLoginResponse.accessToken,
@@ -13,11 +13,12 @@ export async function discordLogin(code: String){
         )
     } catch (e) {
         console.error(e)
-        throw new ApiException("Error on Discord Login")
+        throw new ApiException(t('discord.api.error.login'))
     }
 }
 
 export async function refreshDiscordToken(){
+    const { t } = useI18n()
     try{
         if(!hasDiscordRefreshToken()){
             return
@@ -32,6 +33,6 @@ export async function refreshDiscordToken(){
         )
     } catch (e) {
         console.error(e)
-        throw new ApiException("Error on Discord Login")
+        throw new ApiException(t('discord.api.error.login'))
     }
 }

@@ -5,6 +5,7 @@ export type DiscordLoginResponse = {
 }
 
 export async function getDiscordAuthToken(code: String): Promise<DiscordLoginResponse> {
+    const { t } = useI18n()
     const appConfig = useAppConfig()
 
     const {data, error}: any = await useFetch(
@@ -15,7 +16,7 @@ export async function getDiscordAuthToken(code: String): Promise<DiscordLoginRes
         })
 
     if (error.value) {
-        throw new ApiException("Error on Discord Login")
+        throw new ApiException(t('discord.api.error.login'))
     }
 
     return {
@@ -26,6 +27,7 @@ export async function getDiscordAuthToken(code: String): Promise<DiscordLoginRes
 }
 
 export async function refreshDiscordAuthToken(refreshToken: String): Promise<DiscordLoginResponse> {
+    const { t } = useI18n()
     const appConfig = useAppConfig()
 
     const {data, error}: any = await useFetch(
@@ -36,7 +38,7 @@ export async function refreshDiscordAuthToken(refreshToken: String): Promise<Dis
         })
 
     if (error.value) {
-        throw new ApiException("Error on Discord Login")
+        throw new ApiException(t('discord.api.error.login'))
     }
 
     return {

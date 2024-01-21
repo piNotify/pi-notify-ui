@@ -1,3 +1,11 @@
 {
-    "app-name": "PiNotify"
+    "app-name": "PiNotify",
+    "discord": {
+        "api": {
+            "error": {
+                "login": "Erro no login do Discord",
+                "get-guilds": "Erro ao obter servidores do Discord"
+            }
+        }
+    }
 }

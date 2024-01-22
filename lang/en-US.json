@@ -5,6 +5,9 @@
             "error": {
                 "login": "Error on Discord Login",
                 "get-guilds": "Error on getting guilds from Discord",
+                "get-guild": "Error on getting guild from Discord",
+                "get-guild-not-admin": "Error! You are not admin on this guild!",
+                "get-guild-not-present": "Error! Bot is not present on this guild!"
             }
         }
     }

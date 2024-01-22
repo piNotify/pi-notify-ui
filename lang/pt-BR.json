@@ -4,7 +4,10 @@
         "api": {
             "error": {
                 "login": "Erro no login do Discord",
-                "get-guilds": "Erro ao obter servidores do Discord"
+                "get-guilds": "Erro ao obter servidores do Discord",
+                "get-guild": "Erro ao obter o servidor do Discord",
+                "get-guild-not-admin": "Erro! Você não é administrador desse servidor!",
+                "get-guild-not-present": "Erro! O bot não está nesse servidor!"
             }
         }
     }

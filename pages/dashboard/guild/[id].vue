@@ -7,6 +7,7 @@ const discordGuild: DiscordGuild = await getDiscordGuild(route.params.id as stri
 </script>
 
 <template>
+   
     <span>Guild {{ route.params.id }}</span>
     <span>name {{ discordGuild.name }}</span>
 </template>

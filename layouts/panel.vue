@@ -5,6 +5,8 @@ import BaseLayout from './BaseLayout.vue'
 
 <template>
     <BaseLayout>
-        <slot />
+        <main>
+            <slot />
+        </main>
     </BaseLayout>
 </template>

@@ -19,6 +19,7 @@ function addToServer(){
                 <div class="card-body d-flex flex-col">
                     <div class="col" :class="$style.serverImage">
                         <img v-if="guild.icon" :src="`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`" alt="guild icon" />
+                        <img v-else src="/discord.png" alt="default discord logo" />
                     </div>
                     <div class="col">
                         <h2>{{ guild.name }}</h2>

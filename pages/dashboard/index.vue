@@ -13,10 +13,12 @@ function addToServer(){
 
 <template>
     <NuxtLayout>
-        <p>Dashboard Page</p>
-        <div :class="$style.servers">
-            <div v-for="guild in discordGuilds" :key="guild.id" class="card card-default">
-                <div class="card-body d-flex flex-col">
+        <div class="container">
+            <h3 class="text-center">{{t('servers-title')}}</h3>
+            <p class="alert alert-warning">{{t('adm-warning')}}</p>
+            <div :class="$style.servers">
+                <div v-for="guild in discordGuilds" :key="guild.id" class="card card-default">
+                    <div class="card-body d-flex flex-col">
                     <div class="col" :class="$style.serverImage">
                         <img v-if="guild.icon" :src="`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`" alt="guild icon" />
                         <img v-else src="/discord.png" alt="default discord logo" />
@@ -31,13 +33,13 @@ function addToServer(){
                 </div>
             </div>
         </div>
+    </div>
     </NuxtLayout>
 </template>
 
 <style module>
 .servers {
     display: grid;
-    margin: 20px 50px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
 }
@@ -56,10 +58,14 @@ function addToServer(){
 <i18n lang="json">
 {
     "en-US": {
+        "servers-title": "Servers",
+        "adm-warning": "You need to be owner or administrator of a server to configure the bot.",
         "add-to-server": "Add to server",
         "go-to-dashboard": "Go to dashboard"
     },
     "pt-BR": {
+        "servers-title": "Servidores",
+        "adm-warning": "Você precisa ser dono ou administrador de um servidor para configurar o bot.",
         "add-to-server": "Adicionar ao servidor",
         "go-to-dashboard": "Ir para o dashboard"
     }

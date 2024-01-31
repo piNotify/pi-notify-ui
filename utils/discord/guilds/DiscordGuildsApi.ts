@@ -16,11 +16,12 @@ export async function getDiscordGuildsAdmin(accessToken: string): Promise<Discor
         const appConfig = useAppConfig()
         
         const {data, error}: any = await useFetch(
-        appConfig.backendUrl + 'discord/guilds/admin', {
-            headers: {
-                accessToken
+            appConfig.backendUrl + 'discord/guilds/admin', {
+                headers: {
+                    accessToken
+                }
             }
-        })
+        )
         
         if (error.value) {
             throw new ApiException(t('discord.api.error.get-guilds'))
@@ -45,9 +46,6 @@ export async function getDiscordGuild(guildId: string, accessToken: string): Pro
                 accessToken
             }
         })
-
-        console.log(data.value)
-        console.log(error.value)
         
         if (error.value) {
             throw new ApiException(t('discord.api.error.get-guild'))

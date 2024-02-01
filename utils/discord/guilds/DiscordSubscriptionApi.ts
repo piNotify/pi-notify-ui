@@ -14,6 +14,12 @@ export type DiscordSubscription = {
     channel: DiscordChannel
 }
 
+export type AddDiscordSubscription = {
+    url: string
+    textChannelId: string
+    messageTemplate: string
+}
+
 export async function getDiscordGuildSubscriptions(guildId: string, accessToken: string): Promise<DiscordSubscription[]> {
     const { t } = useI18n()
     try{

@@ -7,6 +7,13 @@ export type DiscordGuild = {
     botIsPresent: boolean
 }
 
+export type DiscordChannel = {
+    id: string
+    name: string
+    type: number
+    position: number
+}
+
 export class GuildNotAdminException extends Error {}
 export class GuildNotPresentException extends Error {}
 
@@ -64,6 +71,26 @@ export async function getDiscordGuild(guildId: string, accessToken: string): Pro
         }
         
         return data.value as DiscordGuild
+    } catch (e) {
+        console.error(e)
+        throw new ApiException(t('discord.api.error.get-guild'))
+    }
+}
+
+export async function getTextChannels(guildId: string, accessToken: string): Promise<DiscordChannel[]> {
+    try{
+        const appConfig = useAppConfig()
+        const {data, error}: any = await useFetch(
+            appConfig.backendUrl + `discord/guild/${guildId}/channels`, {
+                headers: {
+                    accessToken
+                }
+            }
+        )
+
+        console.log(data, error)
+
+        return data.value as DiscordChannel[]
     } catch (e) {
         console.error(e)
         throw new ApiException(t('discord.api.error.get-guild'))

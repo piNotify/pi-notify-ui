@@ -8,12 +8,13 @@ export async function getDiscordAuthToken(code: String): Promise<DiscordLoginRes
     const { t } = useI18n()
     const appConfig = useAppConfig()
 
-    const {data, error}: any = await useFetch(
-        appConfig.backendUrl + 'discord/auth/login', {
+    const { data, error }: any = await useFetch(
+        `${appConfig.backendUrl}discord/auth/login`, {
             query: {
-                code
-            }
-        })
+                code,
+            },
+        },
+    )
 
     if (error.value) {
         throw new ApiException(t('discord.api.error.login'))
@@ -22,7 +23,7 @@ export async function getDiscordAuthToken(code: String): Promise<DiscordLoginRes
     return {
         accessToken: data.value.access_token,
         accessTokenExpiresIn: data.value.expires_in,
-        refreshToken: data.value.refresh_token
+        refreshToken: data.value.refresh_token,
     } as DiscordLoginResponse
 }
 
@@ -30,12 +31,13 @@ export async function refreshDiscordAuthToken(refreshToken: String): Promise<Dis
     const { t } = useI18n()
     const appConfig = useAppConfig()
 
-    const {data, error}: any = await useFetch(
-        appConfig.backendUrl + 'discord/auth/refresh', {
+    const { data, error }: any = await useFetch(
+        `${appConfig.backendUrl}discord/auth/refresh`, {
             query: {
-                refreshToken
-            }
-        })
+                refreshToken,
+            },
+        },
+    )
 
     if (error.value) {
         throw new ApiException(t('discord.api.error.login'))
@@ -44,6 +46,6 @@ export async function refreshDiscordAuthToken(refreshToken: String): Promise<Dis
     return {
         accessToken: data.value.access_token,
         accessTokenExpiresIn: data.value.expires_in,
-        refreshToken: data.value.refresh_token
+        refreshToken: data.value.refresh_token,
     } as DiscordLoginResponse
 }

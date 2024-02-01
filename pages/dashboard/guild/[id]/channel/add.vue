@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { getDiscordAuthToken } from '~/utils/discord/DiscordCookies';
-import { getTextChannels, type DiscordChannel } from '~/utils/discord/guilds/DiscordGuildsApi';
+import { getDiscordAuthToken } from '~/utils/discord/DiscordCookies'
+import { getTextChannels, type DiscordChannel } from '~/utils/discord/guilds/DiscordGuildsApi'
+
 const route = useRoute()
 
 const channels: DiscordChannel[] = await getTextChannels(route.params.id as string, getDiscordAuthToken()!)

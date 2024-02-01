@@ -1,33 +1,34 @@
 <script setup lang="ts">
-const { t } = useI18n({useScope: 'local'})
-import { hasDiscordRefreshToken, hasDiscordAuthToken } from '@/utils/discord/DiscordCookies';
-import { refreshDiscordToken } from '@/utils/discord/auth/DiscordAuthUtils';
+import { hasDiscordRefreshToken, hasDiscordAuthToken } from '@/utils/discord/DiscordCookies'
+import { refreshDiscordToken } from '@/utils/discord/auth/DiscordAuthUtils'
+
+const { t } = useI18n({ useScope: 'local' })
 
 const apiError = ref({
     error: false,
-    message: ''
+    message: '',
 })
 
 async function refreshTokenAndLogin() {
-    if(hasDiscordRefreshToken()) {
+    if (hasDiscordRefreshToken()) {
         await refreshDiscordToken()
     }
-    
-    if(hasDiscordAuthToken()) {
+
+    if (hasDiscordAuthToken()) {
         navigateTo('/dashboard')
         return
     }
-    
-    const appConfig = useAppConfig();
+
+    const appConfig = useAppConfig()
     navigateTo(appConfig.discordLoginUrl, { external: true })
 }
 
-try{
+try {
     await refreshTokenAndLogin()
 } catch (e) {
     apiError.value = {
         error: true,
-        message: (e as Error).message
+        message: (e as Error).message,
     }
 }
 </script>
@@ -52,4 +53,4 @@ try{
             "redirecting": "Redirecionando..."
         }
     }
-    </i18n>
+</i18n>

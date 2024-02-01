@@ -1,15 +1,15 @@
-import { getDiscordAuthToken, type DiscordLoginResponse, refreshDiscordAuthToken } from "./DiscordAuthApi";
-import { getDiscordRefreshToken, hasDiscordRefreshToken, setDiscordCookies } from "../DiscordCookies";
+import { getDiscordAuthToken, type DiscordLoginResponse, refreshDiscordAuthToken } from './DiscordAuthApi'
+import { getDiscordRefreshToken, hasDiscordRefreshToken, setDiscordCookies } from '../DiscordCookies'
 
-export async function discordLogin(code: String){
+export async function discordLogin(code: String) {
     const { t } = useI18n()
-    try{
+    try {
         const discordLoginResponse: DiscordLoginResponse = await getDiscordAuthToken(code)
-        
+
         setDiscordCookies(
             discordLoginResponse.accessToken,
             discordLoginResponse.accessTokenExpiresIn,
-            discordLoginResponse.refreshToken
+            discordLoginResponse.refreshToken,
         )
     } catch (e) {
         console.error(e)
@@ -17,19 +17,19 @@ export async function discordLogin(code: String){
     }
 }
 
-export async function refreshDiscordToken(){
+export async function refreshDiscordToken() {
     const { t } = useI18n()
-    try{
-        if(!hasDiscordRefreshToken()){
+    try {
+        if (!hasDiscordRefreshToken()) {
             return
         }
 
         const discordLoginResponse: DiscordLoginResponse = await refreshDiscordAuthToken(getDiscordRefreshToken() as string)
-        
+
         setDiscordCookies(
             discordLoginResponse.accessToken,
             discordLoginResponse.accessTokenExpiresIn,
-            discordLoginResponse.refreshToken
+            discordLoginResponse.refreshToken,
         )
     } catch (e) {
         console.error(e)

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { t } = useI18n({useScope: 'local'})
+const { t } = useI18n({ useScope: 'local' })
 
-function addToServer(){
+function addToServer() {
     const appConfig = useAppConfig()
-    navigateTo(appConfig.discordAddToServerUrl, { external: true  })
+    navigateTo(appConfig.discordAddToServerUrl, { external: true })
 }
 </script>
 
@@ -11,11 +11,19 @@ function addToServer(){
     <NuxtLayout>
         <main :class="$style.main">
             <div :class="$style.container">
-                <h1 :class="$style.title">{{ $t('app-name') }}</h1>
-                <p :class="$style.subtitle">{{ t('subtitle') }}</p>
+                <h1 :class="$style.title">
+                    {{ $t('app-name') }}
+                </h1>
+                <p :class="$style.subtitle">
+                    {{ t('subtitle') }}
+                </p>
                 <div :class="$style.buttons">
-                    <button @click="addToServer">{{ t('add-to-server') }}</button>
-                    <NuxtLink to="dashboard">{{ t('go-to-dashboard') }}</NuxtLink>
+                    <button type="button" @click="addToServer">
+                        {{ t('add-to-server') }}
+                    </button>
+                    <NuxtLink to="dashboard">
+                        {{ t('go-to-dashboard') }}
+                    </NuxtLink>
                 </div>
             </div>
         </main>

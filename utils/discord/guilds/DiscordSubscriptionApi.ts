@@ -22,15 +22,11 @@ export type AddDiscordSubscription = {
 
 export async function getDiscordGuildSubscriptions(guildId: string, accessToken: string): Promise<DiscordSubscription[]> {
     const { t } = useI18n()
-    try{
+    try {
         const appConfig = useAppConfig()
-        const {data, error}: any = await useFetch(
-            appConfig.backendUrl + `/discord/guild/${guildId}/subscriptions`, {
-                headers: {
-                    accessToken
-                }
-            }
-        )
+        const { data }: any = await useFetch(`${appConfig.backendUrl}/discord/guild/${guildId}/subscriptions`, {
+            headers: { accessToken },
+        })
 
         return data.value as DiscordSubscription[]
     } catch (e) {

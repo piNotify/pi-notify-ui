@@ -12,27 +12,27 @@ export function hasDiscordRefreshToken() {
 
 export function setDiscordCookies(accessToken: string, accessTokenMaxAge: number, refreshToken: string) {
     const appConfig = useAppConfig()
-   
+
     const accessTokenCookie = useCookie(appConfig.discordAccessTokenCookieName, {
-        maxAge: accessTokenMaxAge
+        maxAge: accessTokenMaxAge,
     })
 
     accessTokenCookie.value = accessToken
 
     const refreshTokenCookie = useCookie(appConfig.discordRefreshTokenCookieName, {
-        maxAge: appConfig.discordRefreshTokenCookieMaxAge
+        maxAge: appConfig.discordRefreshTokenCookieMaxAge,
     })
-    
+
     refreshTokenCookie.value = refreshToken
 }
 
-export function getDiscordAuthToken(){
+export function getDiscordAuthToken() {
     const appConfig = useAppConfig()
     const cookie = useCookie(appConfig.discordAccessTokenCookieName)
     return cookie.value
 }
 
-export function getDiscordRefreshToken(){
+export function getDiscordRefreshToken() {
     const appConfig = useAppConfig()
     const cookie = useCookie(appConfig.discordRefreshTokenCookieName)
     return cookie.value

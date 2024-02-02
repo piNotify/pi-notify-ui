@@ -9,7 +9,7 @@ const apiError = ref({
     message: '',
 })
 
-async function login() {
+async function login(): Promise<void> {
     await discordLogin(route.query.code as string)
 
     if (route.query.guild_id) {

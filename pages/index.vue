@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n({ useScope: 'local' })
 
-function addToServer() {
+function addToServer(): void {
     const appConfig = useAppConfig()
     navigateTo(appConfig.discordAddToServerUrl, { external: true })
 }

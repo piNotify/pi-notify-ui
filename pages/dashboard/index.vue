@@ -6,7 +6,7 @@ const { t } = useI18n({ useScope: 'local' })
 
 const discordGuilds: DiscordGuild[] = await getDiscordGuildsAdmin(getDiscordAuthToken()!)
 
-function addToServer() {
+function addToServer(): void {
     const appConfig = useAppConfig()
     navigateTo(appConfig.discordAddToServerUrl, { external: true })
 }

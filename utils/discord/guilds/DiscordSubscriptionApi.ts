@@ -1,11 +1,11 @@
-export type DiscordChannel = {
+export interface DiscordChannel {
     id: string
     channelId: string
     name: string
     url: string
 }
 
-export type DiscordSubscription = {
+export interface DiscordSubscription {
     id: string
     channelId: string
     guildId: string
@@ -14,7 +14,7 @@ export type DiscordSubscription = {
     channel: DiscordChannel
 }
 
-export type AddDiscordSubscription = {
+export interface AddDiscordSubscription {
     url: string
     textChannelId: string
     messageTemplate: string

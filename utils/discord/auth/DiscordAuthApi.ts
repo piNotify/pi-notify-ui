@@ -1,4 +1,6 @@
-export type DiscordLoginResponse = {
+import ApiException from '~/utils/BackendApi'
+
+export interface DiscordLoginResponse {
     accessToken: string
     accessTokenExpiresIn: number
     refreshToken: string

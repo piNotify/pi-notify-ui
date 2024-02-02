@@ -1,7 +1,8 @@
 import { getDiscordAuthToken, type DiscordLoginResponse, refreshDiscordAuthToken } from './DiscordAuthApi'
 import { getDiscordRefreshToken, hasDiscordRefreshToken, setDiscordCookies } from '../DiscordCookies'
+import ApiException from '~/utils/BackendApi'
 
-export async function discordLogin(code: String) {
+export async function discordLogin(code: String): Promise<void> {
     const { t } = useI18n()
     try {
         const discordLoginResponse: DiscordLoginResponse = await getDiscordAuthToken(code)
@@ -17,7 +18,7 @@ export async function discordLogin(code: String) {
     }
 }
 
-export async function refreshDiscordToken() {
+export async function refreshDiscordToken(): Promise<void> {
     const { t } = useI18n()
     try {
         if (!hasDiscordRefreshToken()) {

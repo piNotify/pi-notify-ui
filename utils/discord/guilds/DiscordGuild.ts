@@ -1,4 +1,4 @@
-export type DiscordGuild = {
+export interface DiscordGuild {
     id: string
     name: string
     icon: string

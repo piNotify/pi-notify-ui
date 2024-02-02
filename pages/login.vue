@@ -9,7 +9,7 @@ const apiError = ref({
     message: '',
 })
 
-async function refreshTokenAndLogin() {
+async function refreshTokenAndLogin(): Promise<void> {
     if (hasDiscordRefreshToken()) {
         await refreshDiscordToken()
     }

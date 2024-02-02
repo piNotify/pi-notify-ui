@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
 module.exports = {
     root: true,
     env: {
@@ -114,6 +116,27 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         'function-paren-newline': ['error', 'consistent'],
         'comma-dangle': ['error', 'always-multiline'],
+
+        '@typescript-eslint/adjacent-overload-signatures': 'error',
+        '@typescript-eslint/array-type': 'error',
+        '@typescript-eslint/ban-tslint-comment': 'error',
+        '@typescript-eslint/class-literal-property-style': 'error',
+        '@typescript-eslint/consistent-generic-constructors': 'error',
+        '@typescript-eslint/consistent-indexed-object-style': 'error',
+        '@typescript-eslint/consistent-type-definitions': 'error',
+        '@typescript-eslint/no-confusing-non-null-assertion': 'error',
+        'no-empty-function': 'off',
+        '@typescript-eslint/no-empty-function': 'error',
+        '@typescript-eslint/no-empty-interface': 'error',
+        '@typescript-eslint/prefer-for-of': 'error',
+        '@typescript-eslint/prefer-function-type': 'error',
+        '@typescript-eslint/prefer-namespace-keyword': 'error',
+
+        '@typescript-eslint/explicit-function-return-type': 'error',
+        '@typescript-eslint/no-import-type-side-effects': 'error',
+
+        'no-magic-numbers': 'off',
+        '@typescript-eslint/no-magic-numbers': 'error',
     },
     // These are added if you chose also to install Jest plugin for Vue CLI
     // With my own modifications here as an example
